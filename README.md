@@ -1,24 +1,38 @@
-# PAP_NER + PhoBERT-v2 + CRF
+# PAP_NER + PhoBERT-v2 for Vietnamese NER
 
-Bộ notebook và artifact cho bài toán nhận dạng thực thể tiếng Việt (NER) trên **PAP_NER**, sử dụng **PhoBERT-v2 kết hợp CRF**.
+Các notebook và kết quả huấn luyện/đánh giá PhoBERT-v2 trên bộ dữ liệu **PAP_NER**. Repository lưu riêng hai cấu hình mô hình: **CRF** và **Softmax (không dùng CRF)**.
 
 ## Cấu trúc repository
 
-- `notebooks/PAP_NER_PhoBERT_v2_CRF_1epoch.ipynb` — notebook Kaggle, chạy một epoch để xác minh pipeline.
-- `notebooks/PAP_NER_PhoBERT_v2_CRF_20epoch.ipynb` — notebook cấu hình thí nghiệm trên Vast.ai; có profile 20 epoch và các bước kiểm tra, train, đánh giá, đóng gói kết quả.
-- `artifacts/PAP_NER_PhoBERT_v2_CRF_20epoch_results.zip` — kết quả chạy, gồm checkpoint tốt nhất, runner, tokenizer, cấu hình, lịch sử train và báo cáo đánh giá. File này được lưu bằng Git LFS.
+### CRF
+
+- `notebooks/PAP_NER_PhoBERT_v2_CRF_1epoch.ipynb` — notebook Kaggle để xác minh pipeline trong một epoch.
+- `notebooks/PAP_NER_PhoBERT_v2_CRF_20epoch.ipynb` — notebook cấu hình thí nghiệm trên Vast.ai.
+- `artifacts/PAP_NER_PhoBERT_v2_CRF_20epoch_results.zip` — checkpoint, runner, tokenizer, cấu hình và báo cáo đánh giá CRF.
+
+### Softmax (không dùng CRF)
+
+- `notebooks/PAP_NER_PhoBERT_v2_Softmax_EvalPlus.ipynb` — notebook huấn luyện và đánh giá PhoBERT-v2 với classification head Softmax.
+- `artifacts/papner_phobert_v2_softmax_20ep_rtx3090_24gb-results.zip` — checkpoint, runner, tokenizer, biểu đồ train và báo cáo đánh giá Softmax.
+
+Hai file ZIP kết quả được lưu bằng Git LFS.
 
 ## Notebook trên Kaggle
 
-[Mở notebook PhoBERT-v2 test 1 epoch trên Kaggle](https://www.kaggle.com/code/dsfsdfdssdfdsf/phobert-v2-test-1-epoch-fs/notebook)
+[PhoBERT-v2 test 1 epoch trên Kaggle (CRF)](https://www.kaggle.com/code/dsfsdfdssdfdsf/phobert-v2-test-1-epoch-fs/notebook)
 
-## Kết quả trong artifact
+## Kết quả test split
 
-Trên test split được ghi trong artifact, entity strict micro F1 là **0.9804** (precision **0.9888**, recall **0.9721**). Báo cáo đầy đủ nằm trong `test_report.txt` và `test_metrics.json` bên trong file ZIP.
+| Cấu hình | Entity strict precision | Entity strict recall | Entity strict micro F1 |
+| --- | ---: | ---: | ---: |
+| PhoBERT-v2 + CRF | 0.9888 | 0.9721 | 0.9804 |
+| PhoBERT-v2 + Softmax, không CRF | 0.9923 | 0.9645 | 0.9782 |
 
-## Lấy artifact
+Các chỉ số được trích từ `test_metrics.json`; báo cáo đầy đủ nằm trong từng file ZIP.
 
-Cần cài Git LFS để tải file ZIP đầy đủ:
+## Clone và tải artifacts
+
+Cần cài Git LFS để lấy các file ZIP đầy đủ:
 
 ```bash
 git lfs install
@@ -27,6 +41,4 @@ cd papner-phobert-v2-crf
 git lfs pull
 ```
 
-Nếu Git LFS chưa được cài, clone vẫn lấy được notebook và README nhưng file ZIP lớn sẽ chỉ là con trỏ LFS.
-
-
+Nếu chưa cài Git LFS, clone vẫn lấy được notebook và README nhưng các file ZIP lớn sẽ chỉ là con trỏ LFS.
