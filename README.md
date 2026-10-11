@@ -30,6 +30,14 @@ Hai file ZIP kết quả được lưu bằng Git LFS.
 
 Các chỉ số được trích từ `test_metrics.json`; báo cáo đầy đủ nằm trong từng file ZIP.
 
+## So sánh hai lần chạy và kiểm tra training
+
+Bảng chỉ số theo từng chế độ đánh giá, siêu tham số, phân tích split và đồ thị loss/F1: [reports/experiment-comparison.md](reports/experiment-comparison.md).
+
+![Train/dev loss và dev F1](reports/figures/loss-curves.png)
+
+![Dev strict micro-F1 theo epoch](reports/figures/dev-f1.png)
+
 ## Clone và tải artifacts
 
 Cần cài Git LFS để lấy các file ZIP đầy đủ:
