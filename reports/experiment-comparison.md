@@ -78,4 +78,3 @@ Dataset revision và hash các split trong artifacts khớp với dữ liệu đ
 ## Tái lập
 
 Artifacts chứa runner, cấu hình, predictions, metrics và history cho từng lần chạy. Xem `../artifacts/PAP_NER_PhoBERT_v2_CRF_20epoch_results.zip` và `../artifacts/papner_phobert_v2_softmax_20ep_rtx3090_24gb-results.zip`.
-
