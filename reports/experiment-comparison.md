@@ -31,16 +31,16 @@ Các chỉ số trong bảng này được tính bằng **nervaluate 0.2.0** t�
 
 ### Hyperparameter
 
-| Hyperparameter | Giá trị chung | CRF | Softmax |
-| --- | --- | --- | --- |
-| Optimizer | AdamW | — | — |
-| Learning rate encoder | `2e-5` | — | — |
-| Learning rate head | `1e-3` | CRF | classifier |
-| LR scheduler / warmup | Linear decay / 0.1 | — | — |
-| Batch size train | 32 | — | — |
-| Weight decay / epsilon | 0.01 / `1e-6` | — | — |
-| Gradient clipping | max norm 1.0 | — | — |
-| Dropout / precision | 0.1 / FP16 | — | — |
+| Hyperparameter | PhoBERT-v2 + CRF | PhoBERT-v2 + Softmax |
+| --- | --- | --- |
+| Optimizer | AdamW | AdamW |
+| Learning rate encoder | `2e-5` | `2e-5` |
+| Learning rate head | `1e-3` (CRF) | `1e-3` (classifier) |
+| LR scheduler / warmup | Linear decay / 0.1 | Linear decay / 0.1 |
+| Batch size train | 32 | 32 |
+| Weight decay / epsilon | 0.01 / `1e-6` | 0.01 / `1e-6` |
+| Gradient clipping | Max norm 1.0 | Max norm 1.0 |
+| Dropout / precision | 0.1 / FP16 | 0.1 / FP16 |
 
 ## Đường cong huấn luyện
 
@@ -59,7 +59,7 @@ Loss được lưu theo **mỗi câu**. CRF negative log-likelihood và Softmax 
 | VBPL | 97.12 / 97.71 / 97.41 | 98.19 / 98.55 / 98.37 | -0.96 |
 | NG | 99.98 / 99.98 / 99.98 | 100.00 / 99.98 / 99.99 | -0.01 |
 | SL | 97.72 / 96.77 / 97.24 | 99.02 / 98.41 / 98.72 | -1.47 |
-| Macro (trung bình F1 từng loại) | — / — / 97.94 | — / — / 98.25 | -0.31 |
+| Macro F1 (trung bình F1 từng loại) | 97.94% | 98.25% | -0.31 pp |
 
 ## Kiểm tra tính độc lập của split
 
@@ -78,3 +78,4 @@ Dataset revision và hash các split trong artifacts khớp với dữ liệu đ
 ## Tái lập
 
 Artifacts chứa runner, cấu hình, predictions, metrics và history cho từng lần chạy. Xem `../artifacts/PAP_NER_PhoBERT_v2_CRF_20epoch_results.zip` và `../artifacts/papner_phobert_v2_softmax_20ep_rtx3090_24gb-results.zip`.
+
