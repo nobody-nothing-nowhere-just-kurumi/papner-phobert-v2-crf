@@ -20,6 +20,7 @@ Hai file ZIP kết quả được lưu bằng Git LFS.
 ## Notebook trên Kaggle
 
 [PhoBERT-v2 test 1 epoch trên Kaggle (CRF)](https://www.kaggle.com/code/dsfsdfdssdfdsf/phobert-v2-test-1-epoch-fs/notebook)
+[PhoBERT-v2 + CRF, dataset Dedup 70/15/15, 1 epoch trên Kaggle](https://www.kaggle.com/code/dsfsdfdssdfdsf/pap-ner-phobert-v2-crf-1epoch-kaggle)
 
 ## Kết quả test split
 
